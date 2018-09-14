@@ -1,0 +1,182 @@
+<mvc:View controllerName="nxpcm.sample.download.controller.DownloadVariants" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:core="sap.ui.core">
+	<App>
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<VBox>
+						<HBox>
+							<Panel headerText="Download with a-Tag">
+								<HBox>
+									<List items="{links>/links}" headerText="Inline">
+										<StandardListItem title="{links>text}" type="Active" press="downloadWithA">
+											<customData>
+												<core:CustomData key="link" value="{links>inline}"/>
+											</customData>
+										</StandardListItem>
+									</List>
+									<List items="{links>/links}" headerText="Attachment">
+										<StandardListItem title="{links>text}" type="Active" press="downloadWithA">
+											<customData>
+												<core:CustomData key="link" value="{links>attachment}"/>
+											</customData>
+										</StandardListItem>
+									</List>
+								</HBox>
+							</Panel>
+							<Panel headerText="Download with a-Tag and target = _blank">
+								<HBox>
+									<List items="{links>/links}" headerText="Inline">
+										<StandardListItem title="{links>text}" type="Active" press="downloadWithABlank">
+											<customData>
+												<core:CustomData key="link" value="{links>inline}"/>
+											</customData>
+										</StandardListItem>
+									</List>
+									<List items="{links>/links}" headerText="Attachment">
+										<StandardListItem title="{links>text}" type="Active" press="downloadWithABlank">
+											<customData>
+												<core:CustomData key="link" value="{links>attachment}"/>
+											</customData>
+										</StandardListItem>
+									</List>
+								</HBox>
+							</Panel>
+						</HBox>
+						<Panel headerText="Download with iFrame">
+							<HBox>
+								<List items="{links>/links}" headerText="Inline">
+									<StandardListItem title="{links>text}" type="Active" press="downloadWithIFrame">
+										<customData>
+											<core:CustomData key="link" value="{links>inline}"/>
+										</customData>
+									</StandardListItem>
+								</List>
+								<List items="{links>/links}" headerText="Attachment">
+									<StandardListItem title="{links>text}" type="Active" press="downloadWithIFrame">
+										<customData>
+											<core:CustomData key="link" value="{links>attachment}"/>
+										</customData>
+									</StandardListItem>
+								</List>
+								<core:HTML id="idIFrameDownload" visible="false"></core:HTML>
+							</HBox>
+						</Panel>
+						<HBox>
+							<Panel headerText="Download with window.open">
+								<HBox>
+									<List items="{links>/links}" headerText="Inline">
+										<StandardListItem title="{links>text}" type="Active" press="downloadWithWindowOpen">
+											<customData>
+												<core:CustomData key="link" value="{links>inline}"/>
+											</customData>
+										</StandardListItem>
+									</List>
+									<List items="{links>/links}" headerText="Attachment">
+										<StandardListItem title="{links>text}" type="Active" press="downloadWithWindowOpen">
+											<customData>
+												<core:CustomData key="link" value="{links>attachment}"/>
+											</customData>
+										</StandardListItem>
+									</List>
+								</HBox>
+							</Panel>
+							<Panel headerText="Download with window.open and windowName = _self">
+								<HBox>
+									<List items="{links>/links}" headerText="Inline">
+										<StandardListItem title="{links>text}" type="Active" press="downloadWithWindowOpenSelf">
+											<customData>
+												<core:CustomData key="link" value="{links>inline}"/>
+											</customData>
+										</StandardListItem>
+									</List>
+									<List items="{links>/links}" headerText="Attachment">
+										<StandardListItem title="{links>text}" type="Active" press="downloadWithWindowOpenSelf">
+											<customData>
+												<core:CustomData key="link" value="{links>attachment}"/>
+											</customData>
+										</StandardListItem>
+									</List>
+								</HBox>
+							</Panel>
+						</HBox>
+						<Panel headerText="Download with window.location.href">
+							<HBox>
+								<List items="{links>/links}" headerText="Inline">
+									<StandardListItem title="{links>text}" type="Active" press="downloadWithWindowLocationHref">
+										<customData>
+											<core:CustomData key="link" value="{links>inline}"/>
+										</customData>
+									</StandardListItem>
+								</List>
+								<List items="{links>/links}" headerText="Attachment">
+									<StandardListItem title="{links>text}" type="Active" press="downloadWithWindowLocationHref">
+										<customData>
+											<core:CustomData key="link" value="{links>attachment}"/>
+										</customData>
+									</StandardListItem>
+								</List>
+							</HBox>
+						</Panel>
+						<HBox>
+							<Panel headerText="Download with sap.m.URLHelper.redirect">
+								<HBox>
+									<List items="{links>/links}" headerText="Inline">
+										<StandardListItem title="{links>text}" type="Active" press="downloadWithURLHelper">
+											<customData>
+												<core:CustomData key="link" value="{links>inline}"/>
+											</customData>
+										</StandardListItem>
+									</List>
+									<List items="{links>/links}" headerText="Attachment">
+										<StandardListItem title="{links>text}" type="Active" press="downloadWithURLHelper">
+											<customData>
+												<core:CustomData key="link" value="{links>attachment}"/>
+											</customData>
+										</StandardListItem>
+									</List>
+								</HBox>
+							</Panel>
+							<Panel headerText="Download with sap.m.URLHelper.redirect and bNewWindow = true">
+								<HBox>
+									<List items="{links>/links}" headerText="Inline">
+										<StandardListItem title="{links>text}" type="Active" press="downloadWithURLHelperNewWindow">
+											<customData>
+												<core:CustomData key="link" value="{links>inline}"/>
+											</customData>
+										</StandardListItem>
+									</List>
+									<List items="{links>/links}" headerText="Attachment">
+										<StandardListItem title="{links>text}" type="Active" press="downloadWithURLHelperNewWindow">
+											<customData>
+												<core:CustomData key="link" value="{links>attachment}"/>
+											</customData>
+										</StandardListItem>
+									</List>
+								</HBox>
+							</Panel>
+						</HBox>
+						<Panel headerText="Download with XMLHttpRequest">
+							<HBox>
+								<List items="{links>/links}" headerText="Inline">
+									<StandardListItem title="{links>text}" type="Active" press="downloadWithXHR">
+										<customData>
+											<core:CustomData key="link" value="{links>inline}"/>
+										</customData>
+									</StandardListItem>
+								</List>
+								<List items="{links>/links}" headerText="Attachment">
+									<StandardListItem title="{links>text}" type="Active" press="downloadWithXHR">
+										<customData>
+											<core:CustomData key="link" value="{links>attachment}"/>
+										</customData>
+									</StandardListItem>
+								</List>
+							</HBox>
+						</Panel>
+					</VBox>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
