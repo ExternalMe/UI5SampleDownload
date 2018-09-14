@@ -2,24 +2,24 @@ sap.ui.define([
 	"sap/m/MessageToast",
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/model/json/JSONModel"
-], function(MessageToast, Controller, JSONModel) {
+], function (MessageToast, Controller, JSONModel) {
 	"use strict";
 
 	return Controller.extend("nxpcm.sample.download.controller.DownloadVariants", {
 
-		onInit: function() {
+		onInit: function () {
 			var oLinks = new JSONModel({
 				links: this._aLinks
 			});
 			this.getOwnerComponent().setModel(oLinks, "links");
 		},
 
-		downloadWithXHR: function(oEvent) {
+		downloadWithXHR: function (oEvent) {
 			var sURL = oEvent.getSource().data("link");
 			var oXHR = new XMLHttpRequest();
-			oXHR.open('GET', sURL);
+			oXHR.open("GET", sURL);
 			oXHR.responseType = "blob";
-			oXHR.onload = function() {
+			oXHR.onload = function () {
 				if (oXHR.status < 400 && oXHR.response && oXHR.response.size > 0) {
 					var sHeaderContentDisposition = decodeURIComponent(oXHR.getResponseHeader("content-disposition"));
 					var aHeaderParts = sHeaderContentDisposition.split("filename=");
@@ -40,7 +40,7 @@ sap.ui.define([
 						oA.click();
 						document.body.removeChild(oA);
 						// setTimeout is needed for safari on iOS
-						setTimeout(function() {
+						setTimeout(function () {
 							window.URL.revokeObjectURL(oA.href);
 						}, 250);
 					}
@@ -48,13 +48,13 @@ sap.ui.define([
 					MessageToast.show("Something went wrong!");
 				}
 			}.bind(this);
-			oXHR.onerror = function() {
+			oXHR.onerror = function () {
 				MessageToast.show("Something went wrong!");
 			}.bind(this);
 			oXHR.send();
 		},
 
-		downloadWithA: function(oEvent) {
+		downloadWithA: function (oEvent) {
 			var sURL = oEvent.getSource().data("link");
 			var oA = document.createElement("a");
 			oA.href = sURL;
@@ -64,7 +64,7 @@ sap.ui.define([
 			document.body.removeChild(oA);
 		},
 
-		downloadWithABlank: function(oEvent) {
+		downloadWithABlank: function (oEvent) {
 			var sURL = oEvent.getSource().data("link");
 			var oA = document.createElement("a");
 			oA.href = sURL;
@@ -75,34 +75,34 @@ sap.ui.define([
 			document.body.removeChild(oA);
 		},
 
-		downloadWithIFrame: function(oEvent) {
+		downloadWithIFrame: function (oEvent) {
 			var sURL = oEvent.getSource().data("link");
 			var sIFrame = "<iframe src=" + sURL + " style='display:none'></iframe>";
 			var oHTML = this.getView().byId("idIFrameDownload");
 			oHTML.setContent(sIFrame);
 		},
 
-		downloadWithWindowOpen: function(oEvent) {
+		downloadWithWindowOpen: function (oEvent) {
 			var sURL = oEvent.getSource().data("link");
 			window.open(sURL);
 		},
 
-		downloadWithWindowOpenSelf: function(oEvent) {
+		downloadWithWindowOpenSelf: function (oEvent) {
 			var sURL = oEvent.getSource().data("link");
 			window.open(sURL, "_self");
 		},
 
-		downloadWithWindowLocationHref: function(oEvent) {
+		downloadWithWindowLocationHref: function (oEvent) {
 			var sURL = oEvent.getSource().data("link");
 			window.location.href = sURL;
 		},
 
-		downloadWithURLHelper: function(oEvent) {
+		downloadWithURLHelper: function (oEvent) {
 			var sURL = oEvent.getSource().data("link");
 			sap.m.URLHelper.redirect(sURL);
 		},
 
-		downloadWithURLHelperNewWindow: function(oEvent) {
+		downloadWithURLHelperNewWindow: function (oEvent) {
 			var sURL = oEvent.getSource().data("link");
 			sap.m.URLHelper.redirect(sURL, true);
 		},
